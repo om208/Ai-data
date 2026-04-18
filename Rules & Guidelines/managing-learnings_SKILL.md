@@ -1,23 +1,36 @@
 ---
 name: managing-learnings
 description: Stores, retrieves, and categorises agent learnings in a hierarchical
-             domain/topic directory. Use when a learning is discovered during any
-             task, when the user says remember this or store this, when consulting
-             past learnings before starting a task, or when adding a learning to
-             an existing skill file.
+             domain/topic directory. Triggered at the end of EVERY interaction —
+             mandatory, not optional. Also triggered when user says remember this,
+             store this, or add to learnings, when consulting past learnings before
+             a task, or when extracting from mistakes, corrections, and new patterns.
 ---
 
 # Managing Learnings
 # Version: 1.0 | Created: Monday, 13-Apr-2026 · IST | Updated: —
 
 ## When to use this skill
-- A learning, fix, pattern, or insight is discovered during any task
+- **End of every interaction — mandatory, no exception, even if nothing felt new**
+- A mistake was made during this interaction — extract what went wrong
+- The user corrected, redirected, or gave feedback — extract what changed
+- A new pattern, shortcut, or better approach was discovered mid-task
 - User says "remember this", "store this", or "add this to learnings"
 - Phase 2 (CONSULT) — looking up past learnings before starting
 - User says "add this learning to the skill files"
-- End of session — extracting and storing session learnings
 
 ## Workflow
+
+### Per-interaction learning extraction — runs at Phase 7 every time
+- [ ] Ask: Did I make any mistakes this interaction? → If yes → `mistakes_to_avoid.md`
+- [ ] Ask: Did the user correct or redirect me? → If yes → extract what changed
+- [ ] Ask: Did I discover a better/faster way to do something? → `efficiency_gains.md`
+- [ ] Ask: Did I encounter an unexpected edge case? → `resolving_issues.md`
+- [ ] Ask: Did something work well that I should always repeat? → `best_practices.md`
+- [ ] Select the correct domain, topic, and category file for the learning
+- [ ] Write and store the learning entry using the standard format
+- [ ] Re-index into Context Mode MCP immediately
+- [ ] Add LEARN-ID to the session output under "New learning:"
 
 ### Storing a learning
 - [ ] Identify domain (e.g. `bot_building`, `product_management`)
@@ -98,12 +111,15 @@ Context Mode queries SQLite and returns only matching entries.
 Raw files are the source of truth for writing — Context Mode is for reading.
 
 ## Quality Control Measures
+- [ ] At least 1 learning extracted and stored from every interaction — non-negotiable
+- [ ] Learning source identified: mistake / correction / new pattern / confirmation
 - [ ] Entry uses the standard format with all fields present
 - [ ] Timestamp is in correct IST format with full day name
 - [ ] Minimum 3 keywords tagged
 - [ ] Domain and topic match the directory path exactly
 - [ ] Entry is appended — existing entries untouched
 - [ ] LEARN-ID is unique within the category file
+- [ ] LEARN-ID cited in session output under "New learning:"
 
 ## Building User Trust
 - Always confirm domain and topic before storing — never guess the path

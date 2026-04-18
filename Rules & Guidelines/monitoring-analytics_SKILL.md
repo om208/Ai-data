@@ -52,11 +52,30 @@ During output:
 6. [ ] Learnings referenced in output shown to user
 7. [ ] Applied skill IDs mentioned in output
 
-Post-output:
-8.  [ ] New learnings extracted from this interaction
-9.  [ ] Learnings saved to correct file and path
-10. [ ] Learning entry timestamped correctly in IST
-11. [ ] Learning correctly categorised by domain/topic
+Post-output — LEARNING GATE (all 4 are CRITICAL — failure = CRITICAL anomaly):
+8.  [ ] LEARNING EXTRACTED: YES — at minimum 1 learning stored this interaction
+9.  [ ] Learning saved to correct categorized path: learnings/[domain]/[topic]/[category].md
+10. [ ] Learning entry timestamped correctly in IST format
+11. [ ] LEARN-ID cited in agent output under "New learning:"
+```
+
+### Learning extraction check — primary gate
+After every interaction, before closing the monitoring entry, answer:
+
+```
+LEARNING EXTRACTED THIS INTERACTION: YES / NO
+
+If NO → this is a CRITICAL violation. Log to anomalies.md immediately.
+         Severity: CRITICAL
+         Corrective action: extract learning now, before next message.
+
+If YES → confirm:
+  Source:    [Mistake / User-correction / New-pattern / Confirmation]
+  Domain:    [product_management / bot_building / system]
+  Topic:     [prd_writing / session_management / etc.]
+  Category:  [best_practices / mistakes_to_avoid / efficiency_gains / etc.]
+  LEARN-ID:  [assigned ID]
+  Cited in output: YES / NO
 ```
 
 ### Interaction log entry format
@@ -69,7 +88,12 @@ Post-output:
 **Score:** [X/11]
 **Skills loaded:** [IDs or None]
 **Learnings consulted:** [IDs or None]
-**New learnings:** [IDs or None]
+
+**LEARNING EXTRACTED:** YES / NO
+**LEARN-ID stored:** [LEARN-ID or NONE — CRITICAL if NONE]
+**Learning source:** [Mistake / User-correction / New-pattern / Confirmation]
+**Learning path:** learnings/[domain]/[topic]/[category].md
+
 **Violations:** [describe each or None]
 ```
 

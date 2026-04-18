@@ -57,17 +57,20 @@ The monitoring-analytics skill scores every interaction against these 11 points:
 2. Correct skill loaded for the trigger
 3. Learnings consulted before starting (Phase 2 CONSULT)
 
-**During output (5 points)**
+**During output (4 points)**
 4. All 7 phases executed in order — none skipped
 5. Context Mode MCP used for all file reads
 6. No more than 3 questions asked at once
 7. Output verified before delivery (Phase 5 VERIFY)
-8. Skill ID and Learning ID cited in output
 
-**Post-output (3 points)**
-9. New learning stored (minimum 1 per session)
-10. agent_log.md entry written
-11. All new/updated files re-indexed into Context Mode MCP
+**Post-output — LEARNING GATE (4 points — all CRITICAL)**
+8.  LEARNING EXTRACTED: YES — minimum 1 learning stored this interaction
+9.  Learning saved to correct categorized path: learnings/[domain]/[topic]/[category].md
+10. Learning entry timestamped correctly in IST format
+11. LEARN-ID cited in agent output under "New learning:"
+
+⚠️ Checks 8–11 are CRITICAL. Failure on any = CRITICAL anomaly logged immediately.
+   Goal: agent improves on every conversation, every day — no interaction is wasted.
 
 ---
 

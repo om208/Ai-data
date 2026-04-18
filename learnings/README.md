@@ -121,11 +121,27 @@ IDs are sequential within each category file. Check the last entry before assign
 
 ## Write Rules — Mandatory
 
+- **Extract minimum 1 learning per interaction — mandatory, no exception.**
 - Append only — never delete or edit existing entries.
 - Always re-index after appending.
 - Assign a unique LEARN-ID before writing.
 - Always include all fields in the format — no partial entries.
 - Timestamp format: `Full Day Name, DD-Mon-YYYY · HH:MM IST`
+
+## Per-Interaction Extraction Sources
+
+Before closing every interaction, check all five sources in order:
+
+| Priority | Source | Question to ask | Category file |
+|---|---|---|---|
+| 1 | Mistakes made | What went wrong that I should never repeat? | `mistakes_to_avoid.md` |
+| 2 | User corrections | What did the user change, redirect, or clarify? | `mistakes_to_avoid.md` |
+| 3 | New patterns | Did I find a better or faster way mid-task? | `efficiency_gains.md` |
+| 4 | Edge cases | Did I handle something unexpected? | `resolving_issues.md` |
+| 5 | Confirmations | What worked and should always be repeated? | `best_practices.md` |
+
+If none of 1–4 apply, source 5 always applies — every interaction confirms something.
+No interaction is too small or too simple to produce a learning.
 
 ---
 

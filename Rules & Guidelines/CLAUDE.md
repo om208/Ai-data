@@ -166,6 +166,9 @@ Rules:
 ❌ Never delete any learning or log entry — append only
 ❌ Never deliver without running quality gates first
 ❌ Never write unoptimized code — Free Tier spikes cost
+❌ Never end an interaction without extracting and storing at least 1 learning
+❌ Never store a learning outside the categorized learnings/ directory structure
+❌ Never skip learning extraction even if the interaction felt routine or simple
 
 ✅ Always decompose every task into sub-tasks before executing
 ✅ Always create .tmp/ session file at session start
@@ -179,25 +182,47 @@ Rules:
 ✅ Always verify index updated before marking any task complete
 ✅ Always cite skill IDs and learning IDs in every output
 ✅ Always timestamp: Full Day Name, DD-Mon-YYYY · HH:MM IST
-✅ Always extract minimum 1 learning per session
+✅ Always extract minimum 1 learning per INTERACTION — not just per session
+✅ Always extract from mistakes, corrections, new patterns, and user feedback
+✅ Always store learnings in learnings/[domain]/[topic]/[category].md immediately
 ✅ Always write agent_log.md entry at session end
 ✅ Always read SKILL-DNA-REPORT.md before creating any new skill
 ```
-❌ Never ask more than 3 questions at a time
-❌ Never delete any learning or log entry — append only
-❌ Never deliver without running quality gates first
-❌ Never write unoptimized code — Free Tier spikes cost
 
-✅ Always lazy load — per phase, not upfront
-✅ Always route all reads through Context Mode MCP
-✅ Always re-index every new or updated file into Context Mode immediately
-✅ Always checkpoint after every Phase 6 DELIVER
-✅ Always verify index updated before marking any task complete
-✅ Always cite skill IDs and learning IDs in every output
-✅ Always timestamp: Full Day Name, DD-Mon-YYYY · HH:MM IST
-✅ Always extract minimum 1 learning per session
-✅ Always write agent_log.md entry at session end
-✅ Always read SKILL-DNA-REPORT.md before creating any new skill
+## Per-Interaction Learning Rule — Non-Negotiable
+
+Every single interaction — no matter how small, simple, or routine — ends with
+at least one learning extracted and stored. This is the core mechanism by which
+the agent improves on every conversation and every day.
+
+```
+Sources of learnings (in order of priority):
+1. Mistakes made — what went wrong, what to do differently
+2. User corrections — what the user changed, redirected, or clarified
+3. New patterns discovered — a better way found mid-execution
+4. Confirmed approaches — what worked and should always be repeated
+5. Edge cases encountered — unexpected inputs or conditions handled
+```
+
+Learning extraction happens at Phase 7 (LEARN) — mandatory, never skipped.
+If no mistake or discovery occurred, extract a confirmation learning:
+what worked and why it should always be applied.
+
+Learning path selection:
+```
+What was the interaction about?
+  → PM task            → learnings/product_management/[topic]/
+  → Bot building       → learnings/bot_building/[topic]/
+  → System / agent     → learnings/system/[topic]/
+  → Session management → learnings/system/session_management/
+  → Skill creation     → learnings/system/skill_creation/
+
+What type of learning is it?
+  → Pattern that works → best_practices.md
+  → Mistake to avoid  → mistakes_to_avoid.md
+  → Speed improvement → efficiency_gains.md
+  → Bug / fix         → bug_fixes.md
+  → Issue resolved    → resolving_issues.md
 ```
 
 ---
